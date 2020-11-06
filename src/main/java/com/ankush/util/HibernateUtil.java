@@ -15,6 +15,7 @@ import com.ankush.entities.Counter;
 import com.ankush.entities.Customer;
 import com.ankush.entities.DailyStock;
 import com.ankush.entities.Employee;
+import com.ankush.entities.EmployeeAttendance;
 import com.ankush.entities.FromFactory;
 import com.ankush.entities.FromFactoryTransaction;
 import com.ankush.entities.Godown;
@@ -42,7 +43,7 @@ public class HibernateUtil {
 				setting.put(Environment.DIALECT, "org.hibernate.dialect.MySQL5Dialect");
 				setting.put(Environment.SHOW_SQL, "false");
 				setting.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
-				setting.put(Environment.HBM2DDL_AUTO, "validate");
+				setting.put(Environment.HBM2DDL_AUTO, "update");
 				
 
 				configuration.setProperties(setting);
@@ -62,6 +63,7 @@ public class HibernateUtil {
 				configuration.addAnnotatedClass(Godown.class);
 				configuration.addAnnotatedClass(GodownTransaction.class);
 				configuration.addAnnotatedClass(GodownStock.class);
+				configuration.addAnnotatedClass(EmployeeAttendance.class);
 
 				ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
 						.applySettings(configuration.getProperties()).build();
